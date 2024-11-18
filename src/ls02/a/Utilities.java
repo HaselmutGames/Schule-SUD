@@ -5,9 +5,12 @@ import java.util.Scanner;
 public class Utilities {
     static Scanner scanner = new Scanner(System.in);
     static int choice;
+    static final String RESULT_STRING = "Temperature is: ";
+    static final String SEPARATOR_STRING = "======================================";
+
     public static void main(String[] args) {
 
-        while(true){
+        while (true) {
             mainMenu();
             choice = scanner.nextInt();
             switch (choice) {
@@ -15,30 +18,31 @@ public class Utilities {
                     menuOptionOne();
                     double temp = scanner.nextDouble();
                     temp = convertToCelsius(temp);
-                    System.out.println("Temperature is : " + temp + " Celsius.");
-                    System.out.println("======================================");
+                    System.out.println(RESULT_STRING + temp + " Celsius.");
+                    System.out.println(SEPARATOR_STRING);
                     break;
                 case 2:
                     menuOptionTwoOrThree();
                     temp = scanner.nextDouble();
                     temp = convertToFahrenheit(temp);
-                    System.out.println("Temperature is : " + temp + " Fahhrenheit.");
-                    System.out.println("======================================");
+                    System.out.println(RESULT_STRING + temp + " Fahhrenheit.");
+                    System.out.println(SEPARATOR_STRING);
                     break;
                 case 3:
                     menuOptionTwoOrThree();
                     temp = scanner.nextDouble();
                     temp = convertToKelvin(temp);
-                    System.out.println("Temperature is : " + temp + " Kelvin.");
-                    System.out.println("======================================");
+                    System.out.println(RESULT_STRING + temp + " Kelvin.");
+                    System.out.println(SEPARATOR_STRING);
+                    break;
                 case 4:
                     break;
                 default:
                     System.out.println("Invalid input, try again");
-                    System.out.println("======================================");
+                    System.out.println(SEPARATOR_STRING);
                     break;
             }
-            if(choice == 4){
+            if (choice == 4) {
                 System.out.println("Goodbye");
                 break;
             }
@@ -46,51 +50,51 @@ public class Utilities {
     }
 
     @SuppressWarnings("unused")
-    private static double roundToDecimalPlaces(double number, int decimalPlace){
+    private static double roundToDecimalPlaces(double number, int decimalPlace) {
         double factor = Math.pow(10, decimalPlace);
         return Math.round(number * factor) / factor;
     }
 
-    private static double convertToCelsius(double fahrenheitTemp){
+    private static double convertToCelsius(double fahrenheitTemp) {
         double celsiusTemp;
         celsiusTemp = (fahrenheitTemp - 32) / 1.8;
         return celsiusTemp;
     }
 
-    private static double convertToFahrenheit(double celsiusTemp){
+    private static double convertToFahrenheit(double celsiusTemp) {
         double fahrenheitTemp;
         fahrenheitTemp = celsiusTemp * 1.8 + 32;
         return fahrenheitTemp;
     }
 
-    private static double convertToKelvin(double celsiusTemp){
+    private static double convertToKelvin(double celsiusTemp) {
         double kelvinTemp;
         kelvinTemp = celsiusTemp + 273.15;
         return kelvinTemp;
     }
 
-    private static void mainMenu(){
+    private static void mainMenu() {
         System.out.println("Choose what you want to do: ");
-        System.out.println("======================================");
+        System.out.println(SEPARATOR_STRING);
         System.out.println("1 - convert from fahrenheit to celsius");
         System.out.println("2 - convert from celsius to fahrenheit");
         System.out.println("3 - convert from celsius to kelvin");
         System.out.println("4 - exit");
-        System.out.println("======================================");
+        System.out.println(SEPARATOR_STRING);
         System.out.print("Enter your options' number: ");
     }
 
-    private static void menuOptionOne(){
+    private static void menuOptionOne() {
         System.out.println("Option 1 selected:");
         System.out.println("Enter your fahrenheit temperature:");
     }
 
-    private static void menuOptionTwoOrThree(){
-        if(choice == 2){
+    private static void menuOptionTwoOrThree() {
+        if (choice == 2) {
             System.out.println("Option 2 selected:");
             System.out.println("Enter your Celsius temperature:");
         }
-        if(choice == 3){
+        if (choice == 3) {
             System.out.println("Option 3 selected:");
             System.out.println("Enter your Celsius temperature:");
         }
