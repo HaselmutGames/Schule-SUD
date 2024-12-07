@@ -5,35 +5,58 @@
  * Implementierung der Klasse Rechteck mit 2 Attributen/Eigenschaften
  * laenge und breite
  * Entsprechend sind getter und setter fuer die Attribute vorhanden
- * Es sind Methoden zur Berechnung vom Umfang und von der Flaeche
+ * Zur Berechnung von Flaeche und Umfang werden die Methoden aus der abstrakten Klasse FigurZweiDimensional implementiert
  * */
 package ls03.a;
 
-public class Rechteck {
+public class Rechteck extends FigurZweiDimensional {
     private double laenge;
     private double breite;
 
+    public Rechteck(double laenge, double breite) {
+        setLaenge(laenge); // Ueberprüft die Laenge direkt beim Erstellen
+        setBreite(breite); // Ueberprüft die Breite direkt beim Erstellen
+    }
+
     public double getLaenge() {
-        return this.laenge;
+        return laenge;
     }
 
     public void setLaenge(double laenge) {
+        if (laenge <= 0) {
+            throw new IllegalArgumentException("Die Laenge muss groeßer als 0 sein.");
+        }
         this.laenge = laenge;
     }
 
     public double getBreite() {
-        return this.breite;
+        return breite;
     }
 
     public void setBreite(double breite) {
+        if (breite <= 0) {
+            throw new IllegalArgumentException("Die Breite muss groeßer als 0 sein.");
+        }
         this.breite = breite;
     }
 
-    public double flaecheBerechnen(double laenge, double breite) {
-        return laenge * breite;
+    @Override
+    public double berechneFlaeche() {
+        return laenge * breite; // Laenge * Breite
     }
 
-    public double umfangBerechnen(double laenge, double breite) {
-        return 2 * laenge + 2 * breite;
+    @Override
+    public double berechneUmfang() {
+        return 2 * (laenge + breite); // 2 * (Laenge + Breite)
+    }
+
+    @Override
+    public String toString() {
+        return "Rechteck{" +
+                "laenge=" + laenge +
+                ", breite=" + breite +
+                ", flaeche=" + berechneFlaeche() +
+                ", umfang=" + berechneUmfang() +
+                '}';
     }
 }

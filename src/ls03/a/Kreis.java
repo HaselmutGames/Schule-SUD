@@ -5,37 +5,44 @@
  * Implementierung der Klasse Kreis mit 1 Attribut/Eigenschaft
  * radius
  * Entsprechend sind getter und setter fuer die Attribute vorhanden
- * Es sind Methoden zur Berechnung vom Umfang und von der Flaeche
+ * Zur Berechnung von Flaeche und Umfang werden die Methoden aus der abstrakten Klasse FigurZweiDimensional implementiert
  * */
 package ls03.a;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-public class Kreis {
+public class Kreis extends FigurZweiDimensional {
     private double radius;
-    private final Pattern regex = Pattern.compile("\\d+(\\.\\d*)?");
-    private final Matcher matcher = regex.matcher(String.valueOf(radius));
-    private final boolean isDecimal = matcher.find();
+
+    public Kreis(double radius) {
+        setRadius(radius); // Ueberprueft den Radius direkt beim Erstellen
+    }
 
     public double getRadius() {
-        return this.radius;
+        return radius;
     }
 
     public void setRadius(double radius) {
-        if (isDecimal) {
-            this.radius = radius;
-        } else {
-            System.out.println("radius is not correct, check your input");
+        if (radius <= 0) {
+            throw new IllegalArgumentException("Der Radius muss groeßer als 0 sein.");
         }
+        this.radius = radius;
     }
 
-    public double flaecheBerechnen(double radius) {
-        return Math.PI * Math.pow(radius, 2);
+    @Override
+    public double berechneFlaeche() {
+        return Math.PI * radius * radius; // π * r²
     }
 
-    public double umfangBerechnen(double radius) {
-        return 2 * Math.PI * radius;
+    @Override
+    public double berechneUmfang() {
+        return 2 * Math.PI * radius; // 2 * π * r
     }
 
+    @Override
+    public String toString() {
+        return "Kreis{" +
+                "radius=" + radius +
+                ", flaeche=" + berechneFlaeche() +
+                ", umfang=" + berechneUmfang() +
+                '}';
+    }
 }
