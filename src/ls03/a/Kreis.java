@@ -16,6 +16,11 @@ public class Kreis extends FigurZweiDimensional {
         setRadius(radius); // Ueberprueft den Radius direkt beim Erstellen
     }
 
+    // Copy-Konstruktor
+    public Kreis(Kreis kreis) {
+        this.setRadius(kreis.getRadius());
+    }
+
     public double getRadius() {
         return radius;
     }

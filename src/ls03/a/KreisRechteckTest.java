@@ -57,5 +57,29 @@ public class KreisRechteckTest {
         } catch (IllegalArgumentException e) {
             System.out.println("Fehler: " + e.getMessage());
         }
+
+        // Teste Copy-Konstruktor für Kreis
+        System.out.println("---- Test für Copy-Konstruktor von Kreis ----");
+        try {
+            Kreis originalKreis = new Kreis(3.0);
+            Kreis kopierterKreis = new Kreis(originalKreis);
+            System.out.println("Originaler Kreis: " + originalKreis);
+            System.out.println("Kopierter Kreis: " + kopierterKreis);
+            System.out.println("Sind die beiden Kreise unterschiedlich? " + (originalKreis != kopierterKreis));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Fehler bei Kreis-Radius: " + e.getMessage());
+        }
+
+        // Teste Copy-Konstruktor für Rechteck
+        System.out.println("---- Test für Copy-Konstruktor von Rechteck ----");
+        try {
+            Rechteck originalRechteck = new Rechteck(6.0, 4.0);
+            Rechteck kopiertesRechteck = new Rechteck(originalRechteck);
+            System.out.println("Originales Rechteck: " + originalRechteck);
+            System.out.println("Kopiertes Rechteck: " + kopiertesRechteck);
+            System.out.println("Sind die beiden Rechtecke unterschiedlich? " + (originalRechteck != kopiertesRechteck));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Fehler bei Rechteck: " + e.getMessage());
+        }
     }
 }

@@ -18,6 +18,12 @@ public class Rechteck extends FigurZweiDimensional {
         setBreite(breite); // Ueberprüft die Breite direkt beim Erstellen
     }
 
+    // Copy-Konstruktor
+    public Rechteck(Rechteck rechteck) {
+        this.setLaenge(rechteck.getLaenge());
+        this.setBreite(rechteck.getBreite());
+    }
+
     public double getLaenge() {
         return laenge;
     }
