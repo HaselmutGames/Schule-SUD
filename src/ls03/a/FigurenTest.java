@@ -1,6 +1,6 @@
 package ls03.a;
 
-public class KreisRechteckTest {
+public class FigurenTest {
     public static void main(String[] args) {
 
         // Test Fehlerbehandlung fuer die Klasse Kreis
@@ -80,6 +80,23 @@ public class KreisRechteckTest {
             System.out.println("Sind die beiden Rechtecke unterschiedlich? " + (originalRechteck != kopiertesRechteck));
         } catch (IllegalArgumentException e) {
             System.out.println("Fehler bei Rechteck: " + e.getMessage());
+        }
+
+        // Test Fehlerbehandlung fuer die Klasse Dreieck
+        System.out.println("---- Test fuer Dreieck ----");
+        try {
+            Dreieck dreieck = new Dreieck(3, 4, 5);
+            System.out.println(dreieck);
+            System.out.println("Umfang: " + dreieck.berechneUmfang());
+            System.out.println("Fläche: " + dreieck.berechneFlaeche());
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+        }
+
+        try {
+            Dreieck ungueltigesDreieck = new Dreieck(1, 2, 3); // Ungültiges Dreieck
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
         }
     }
 }
