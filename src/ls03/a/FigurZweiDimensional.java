@@ -3,7 +3,7 @@
  * @version 03.12.2024
  *
  * Um Gemeinsamkeiten zu abstrahieren, kann eine Basisklasse FigurZweiDimensional erstellt werden,
- * von der die Klassen Kreis und Rechteck erben können
+ * von der die Klassen Kreis, Rechteck und Dreieck erben können
  * */
 package ls03.a;
 

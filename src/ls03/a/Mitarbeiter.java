@@ -4,8 +4,8 @@
  *
  * Implementierung der Klasse Mitarbeiter mit 2 Attributen/Eigenschaften
  * Id und Name
- * Entsprechend sind getter und setter fuer die Attribute vorhanden
- * */
+ * Entsprechend sind getter und setter für die Attribute vorhanden
+ */
 
 package ls03.a;
 
@@ -13,28 +13,39 @@ public class Mitarbeiter {
     private int id;
     private String name;
 
-    // Setter fuer ID mit Fehlerabfang
+    /**
+     * Parametrisierter Konstruktor zur Initialisierung von ID und Name.
+     *
+     * @param id   Die eindeutige Mitarbeiter-ID (muss positiv sein).
+     * @param name Der Name des Mitarbeiters (darf nicht leer sein).
+     */
+    public Mitarbeiter(int id, String name) {
+        setId(id); // Validierung durch Setter
+        setName(name); // Validierung durch Setter
+    }
+
+    // Setter für ID mit Fehlerprüfung
     public void setId(int id) {
         if (id < 0) {
-            throw new IllegalArgumentException("Die ID darf nicht negativ sein.");
+            throw new IllegalArgumentException("Die ID darf nicht negativ sein. Gegeben: " + id);
         }
         this.id = id;
     }
 
-    // Getter fuer ID
+    // Getter für ID
     public int getId() {
         return id;
     }
 
-    // Setter fuer Name mit Fehlerabfang
+    // Setter für Name mit Fehlerprüfung
     public void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Der Name darf nicht leer sein.");
+            throw new IllegalArgumentException("Der Name darf nicht leer oder null sein.");
         }
         this.name = name;
     }
 
-    // Getter fuer Name
+    // Getter für Name
     public String getName() {
         return name;
     }
