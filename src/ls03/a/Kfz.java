@@ -35,6 +35,9 @@ public class Kfz {
         if (tankgroesse <= 0 || maximaleGeschwindigkeit <= 0) {
             throw new IllegalArgumentException("Tankgroesse und maximale Geschwindigkeit muessen groesser als 0 sein.");
         }
+        if (modell == null || modell.isBlank()) {
+            throw new IllegalArgumentException("Modell darf nicht leer sein.");
+        }
         this.modell = modell;
         this.tankgroesse = tankgroesse;
         this.tankinhalt = tankgroesse; // Voller Tank bei Erstellung
