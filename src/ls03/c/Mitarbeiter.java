@@ -4,12 +4,18 @@ public abstract class Mitarbeiter {
     private int id;
     private String name;
 
-    public Mitarbeiter(int id, String name) {
+    /**
+     * Parametrisierter Konstruktor zur Initialisierung von ID und Name.
+     *
+     * @param id   Die eindeutige Mitarbeiter-ID (muss positiv sein).
+     * @param name Der Name des Mitarbeiters (darf nicht leer sein).
+     */
+    protected Mitarbeiter(int id, String name) {
         setId(id);
         setName(name);
     }
 
-    public void setId(int id) {
+    protected void setId(int id) {
         if (id < 0) {
             throw new IllegalArgumentException("Die ID darf nicht negativ sein. Gegeben: " + id);
         }
@@ -20,7 +26,7 @@ public abstract class Mitarbeiter {
         return id;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Der Name darf nicht leer oder null sein.");
         }
