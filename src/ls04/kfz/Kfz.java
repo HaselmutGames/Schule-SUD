@@ -29,9 +29,11 @@ public class Kfz {
     private int aktuelleGeschwindigkeit; // Veraenderlich
     private int maximaleGeschwindigkeit; // eher Unveraenderlich aber veraenderlich, falls erlaubt
     private boolean motorAn;
+    private int kilometerstand;
+    private int verbrauchPro100km;
 
     // Konstruktor
-    public Kfz(String modell, int tankgroesse, int maximaleGeschwindigkeit) {
+    public Kfz(String modell, int tankgroesse, int verbrauchPro100km) {
         if (tankgroesse <= 0 || maximaleGeschwindigkeit <= 0) {
             throw new IllegalArgumentException("Tankgroesse und maximale Geschwindigkeit muessen groesser als 0 sein.");
         }
@@ -44,6 +46,8 @@ public class Kfz {
         this.aktuelleGeschwindigkeit = 0;
         this.maximaleGeschwindigkeit = maximaleGeschwindigkeit;
         this.motorAn = false; // Motor ist aus bei Erstellung
+        this.kilometerstand = 0;
+        this.verbrauchPro100km = verbrauchPro100km;
     }
 
     // Getter fuer Stammdaten
@@ -74,6 +78,10 @@ public class Kfz {
 
     public int getAktuelleGeschwindigkeit() {
         return aktuelleGeschwindigkeit;
+    }
+
+    public int getKilometerstand() {
+        return kilometerstand;
     }
 
     // Motor an- und ausschalten
@@ -119,23 +127,23 @@ public class Kfz {
         if (kilometer <= 0) {
             throw new IllegalArgumentException("Die Kilometeranzahl muss groesser als 0 sein.");
         }
-        int benoetigterKraftstoff = kilometer / 10; // Beispiel: Verbrauch 10 km pro Liter
-        if (benoetigterKraftstoff > tankinhalt) {
-            throw new IllegalStateException("Nicht genug Kraftstoff, um die Strecke zu fahren.");
+        int benoetigterKraftstoff = (verbrauchPro100km * kilometer) / 100;
+        if(tankinhalt >= benoetigterKraftstoff && motorAn) {
+            tankinhalt -= benoetigterKraftstoff;
+            kilometerstand += kilometer;
+        } else {
+            throw new IllegalStateException("Nicht genug Kraftstoff im Tank oder Motor ist aus.");
         }
-        tankinhalt -= benoetigterKraftstoff;
-        System.out.println("Das Fahrzeug ist " + kilometer + " Kilometer gefahren.");
     }
 
     // Tanken
     public void tanken(int liter) {
+        int ueberlauf = Math.max(0, (tankinhalt + liter) - tankgroesse);
         if (liter <= 0) {
             throw new IllegalArgumentException("Die Tankmenge muss groesser als 0 sein.");
         }
-        tankinhalt += liter;
-        if (tankinhalt > tankgroesse) {
-            tankinhalt = tankgroesse; // Begrenzung auf maximale Tankgroesse
-        }
+        tankinhalt = Math.max(tankgroesse, tankinhalt + liter);
+        System.out.println("Überlauf: " + ueberlauf + " Liter.");
     }
 
     // Stammdaten ausgeben
