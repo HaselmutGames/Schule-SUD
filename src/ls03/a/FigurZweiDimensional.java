@@ -1,5 +1,5 @@
 /**
- * @author Hammoud Aldalati
+ * @author Hammoud
  * @version 03.12.2024
  *
  * Um Gemeinsamkeiten zu abstrahieren, kann eine Basisklasse FigurZweiDimensional erstellt werden,

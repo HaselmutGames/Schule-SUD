@@ -1,5 +1,5 @@
 /**
- * @author Hammoud Aldalati
+ * @author Hammoud
  * @version 27.11.2024
  *
  * Implementierung der Klasse Mitarbeiter mit 2 Attributen/Eigenschaften

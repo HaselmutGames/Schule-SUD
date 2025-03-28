@@ -1,6 +1,6 @@
 /**
  * @author Hammoud
- * @version 03.12.2024
+ * @version 28.03.2025
  *
  * Implementierung der Klasse Kfz Attributen/Eigenschaften
  * Entsprechend sind getter und setter fuer die Attribute vorhanden
@@ -19,7 +19,7 @@
  * Attribut - motorAn:
  * Der Status des Motors wird ueber die Methoden (motorStarten, motorStoppen) gesteuert.
  * */
-package ls03.a;
+package ls04.kfz;
 
 public class Kfz {
     // Attribute

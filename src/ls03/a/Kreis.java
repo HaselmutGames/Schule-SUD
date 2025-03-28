@@ -1,5 +1,5 @@
 /**
- * @author Hammoud Aldalati
+ * @author Hammoud
  * @version 03.12.2024
  *
  * Implementierung der Klasse Kreis mit 1 Attribut/Eigenschaft
