@@ -15,17 +15,17 @@ public class Verwaltung {
         this.mitarbeiterListe = new ArrayList<>();
     }
 
-    public void neuerMitarbeiter(Mitarbeiter mitarbeiter){
+    public void neuerMitarbeiter(Mitarbeiter mitarbeiter) {
         mitarbeiterListe.add(mitarbeiter);
     }
 
-    public void mitarbeiterEntlassen(int id){
-        mitarbeiterListe.removeIf(mitarbeiter  -> mitarbeiter.getId() == id);
+    public void mitarbeiterEntlassen(int id) {
+        mitarbeiterListe.removeIf(mitarbeiter -> mitarbeiter.getId() == id);
     }
 
-    public void gehaltslisteErstellen(){
+    public void gehaltslisteErstellen() {
         double summe = 0;
-        for(Mitarbeiter mitarbeiter : mitarbeiterListe){
+        for (Mitarbeiter mitarbeiter : mitarbeiterListe) {
             System.out.println(mitarbeiter + ", Einkommen: " + mitarbeiter.einkommen());
             summe += mitarbeiter.einkommen();
         }
@@ -34,8 +34,8 @@ public class Verwaltung {
 
     public static void main(String[] args) {
         Verwaltung verwaltung = new Verwaltung();
-        
-        Schichtarbeiter schichtarbeiter1 = new Schichtarbeiter(3001, "Hola", 15.0, 160);
+
+        Schichtarbeiter schichtarbeiter1 = new Schichtarbeiter(3001, "Hola", 15.0);
         Bueroarbeiter bueroarbeiter1 = new Bueroarbeiter(5002, "Hello", 3000.0);
         Manager manager1 = new Manager(2003, "Hallo", 5000.0, 10);
 
