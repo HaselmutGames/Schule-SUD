@@ -1,6 +1,6 @@
 package ls03.c;
 
-public abstract class Mitarbeiter {
+public class Mitarbeiter {
     private int id;
     private String name;
 
@@ -36,9 +36,6 @@ public abstract class Mitarbeiter {
     public String getName() {
         return name;
     }
-
-    // Abstrakte Methode für das Einkommen
-    public abstract double einkommen();
 
     @Override
     public String toString() {
