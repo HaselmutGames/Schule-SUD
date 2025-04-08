@@ -12,6 +12,13 @@ public class Schichtarbeiter extends Mitarbeiter {
         this.stundenlohn = stundenlohn;
     }
 
+    protected void setArbeitsstunden(int arbeitsstunden) {
+        if (arbeitsstunden < 0) {
+            throw new IllegalArgumentException("Arbeitsstunden können nicht negativ sein.");
+        }
+        this.arbeitsstunden = arbeitsstunden;
+    }
+
     public void arbeite() {
         this.arbeitsstunden += 8;
     }
