@@ -1,5 +1,4 @@
 public abstract class Beverage {
-
     public final void prepareRecipe(){
         boilWater();
         brew();
